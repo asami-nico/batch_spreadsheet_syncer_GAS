@@ -2,8 +2,6 @@
 staffとsummaryのシートをS3にCSV出力します。
 
 ## スプレッドシートへの設定方法
-[DB同期用スプレッドシート](https://docs.google.com/spreadsheets/d/16RfbBJpZsDoxAcePvasHZlhhsFffl-wp6XEBgJMeOZo/edit?usp=sharing)
-
 #### GASの編集
 DB同期用 → ツール → スクリプトエディタ
 
@@ -25,24 +23,24 @@ DB同期用 → ツール → スクリプトエディタ
 4. 「保存」をクリック
 
 #### トリガー
-* summary
+* sheet1
 現在のプロジェクトのトリガー → トリガーを追加 → イベントのソースを選択:時間主導型
-* staff
+* sheet2
 手動で実行
 
 ## 処理概要
 
-#### staff.gs
-create_staff_csv()、get_staff_values()、create_staff_file()を作成しています。
-create_staff_csv()で各関数を実行し、staffシートをcsv出力しています。
+#### sheet1.gs
+create_sheet1_csv()、get_values()、create_file()を作成しています。
+create_sheet1_csv()で各関数を実行し、sheet1をcsv出力しています。
 
-#### summary.gs
-create_summary_csv()、get_values()、create_file()を作成しています。
-create_summary_csv()で各関数を実行し、summary同期用シートをcsv出力しています。
+#### sheet2.gs
+create_sheet2_csv()、get_sheet2_values()、create_sheet2_file()を作成しています。
+create_sheet2_csv()で各関数を実行し、sheet2をcsv出力しています。
 
 #### function.gs
-staff.gsとsummary.gsで使用する共通の関数を作成しています。
+sheet1.gsとsheet2.gsで使用する共通の関数を作成しています。
 
 #### hash.gs
 MD5でハッシュ化をするMD5()を作成しています。
-作成したMD5()はsummary同期用シートのW列で使用していて、氏名と電話番号をハッシュ化しています。
+作成したMD5()はsheet1で使用していて、該当データをハッシュ化しています。
