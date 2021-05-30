@@ -1,0 +1,2 @@
+# batch_spreadsheet_syncer_GAS
+Googleスプレッドシート-AWSの同期バッチ。GAS編
